@@ -1,0 +1,147 @@
+<html>  
+<head>  
+<title> SignUp Page</title>  
+</head>  
+<body align="center" >  
+<h1> CREATE YOUR ACCOUNT</h1>  
+<table cellspacing="2" align="center" cellpadding="8" border="0">  
+<tr><td> Name</td>   
+<td><input type="text" placeholder="Enter your name" oninput="validate_name()" id="n1"></td></tr> 
+<tr><td>Username </td>  
+<td><input type="text" placeholder="Enter your username" onblur="validate_username()" id="u1"></td></tr>   
+<tr><td>Email </td>  
+<td><input type="text" placeholder="Enter your email id" onblur="validate_email()" id="e1"></td></tr>  
+<tr><td> Set Password</td>  
+<td><input type="password" placeholder="Set a password" onblur="p1()" id="p1"></td></tr>  
+<tr><td>Confirm Password</td>  
+<td><input type="password" placeholder="Confirm your password" onblur="p2()"  id="p2"></td></tr>  
+<tr><td>
+<tr><td>Mobile No</td>
+<td><input type="text" placeholder="Enter you mobile no" onblur="phonenumber()" id="mob"></td></tr>
+
+<tr><td>Age</td>
+<td><input type="text" placeholder="Enter your age" onblur="validate_age()" id="age"></td></tr>
+<tr><td>  
+<input type="submit" value="Create" onClick="create_account()"/>  </td></tr>
+</table>  
+<script type="text/javascript"> 
+
+function validate_username(){
+        var username=document.getElementById("u1").value;
+        var validate=/^[A-Z]/;
+        if(!validate.test(username))
+        {
+                alert('First letter should be capital');
+        }
+}
+
+function validate_age(){
+        var age=document.getElementById("age").value;
+        if(!(age>0)){
+                alert('Please enter correct age');
+        }
+}
+
+function validate_name(){
+        var n=document.getElementById("n1").value; 
+        var letters = /^[A-Za-z]+$/;  
+        var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; 
+        if(!letters.test(n))  
+        {  
+            alert('Name is incorrect must contain alphabets only');  
+        } 
+}
+function validate_email(){
+        var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/; 
+        var e=document.getElementById("e1").value;
+        if (!email_val.test(e))  
+        {  
+                alert('Invalid email format please enter valid email id');  
+        }  
+}
+function p1(){
+        var p=document.getElementById("p1").value;  
+        var pass_val=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+        if(document.getElementById("p1").value.length < 8)  
+        {  
+                alert("Password minimum length is 8");  
+        }  
+        
+        if (!pass_val.test(e))  
+        {  
+                alert('Invalid password please enter valid password');  
+        }  
+}
+
+function p2(){
+         
+        var cp=document.getElementById("p2").value;
+        var p=document.getElementById("p1").value;
+        
+        if(p!=cp)  
+        {  
+                alert("Passwords not matching");  
+        }  
+}
+
+
+function phonenumber(inputtxt)
+{
+        var n=document.getElementById("mob").value;
+        var phoneno = /^\d{10}$/;
+        // if(!inputtxt.value.match(phoneno))
+        // {
+        //         alert("Enter correct mobile number");
+               
+        // }
+        if(n.length>10 || n.length<10)
+        {
+                alert("Enter correct mobile number");
+                // alert(typeof n);
+        }
+        if(typeof n == "string")
+        {
+                alert('Do not enter string');
+        }
+}
+
+function create_account(){  
+var n=document.getElementById("n1").value;  
+var e=document.getElementById("e1").value;  
+var p=document.getElementById("p1").value;  
+var cp=document.getElementById("p2").value;  
+//Code for password validation  
+        var letters = /^[A-Za-z]+$/;  
+        var email_val = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;  
+//other validations required code  
+if(n==''||e==''||p==''||cp==''){  
+alert("Enter each details correctly");  
+}  
+if(!letters.test(n))  
+        {  
+            alert('Name is incorrect must contain alphabets only');  
+        }  
+else if (!email_val.test(e))  
+        {  
+            alert('Invalid email format please enter valid email id');  
+        }  
+else if(p!=cp)  
+{  
+alert("Passwords not matching");  
+}  
+else if(document.getElementById("p1").value.length > 12)  
+{  
+alert("Password maximum length is 12");  
+}  
+else if(document.getElementById("p1").value.length < 6)  
+{  
+alert("Password minimum length is 6");  
+}  
+else{  
+alert("Directing to other page");  
+window.location="";  
+}  
+}  
+</script>  
+</body>  
+</html>  
